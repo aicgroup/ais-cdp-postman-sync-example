@@ -1,0 +1,1992 @@
+{
+	"info": {
+		"_postman_id": "9837006-9404c807-2003-4790-b77b-183431c560f9",
+		"name": "ais-contact-data-platform-svc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create customer",
+			"id": "9837006-9c1ab665-a585-4505-99d6-063e353d5939",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "ais-project-id",
+						"value": "1"
+					},
+					{
+						"key": "x-auth-username",
+						"value": "aic"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers?chi=myChannelInstanceId",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers"
+					],
+					"query": [
+						{
+							"key": "chi",
+							"value": "myChannelInstanceId",
+							"description": "(optional) The customer will be created with a doubleOptIn for this channelInstanceId."
+						}
+					]
+				},
+				"description": "Asynchronously creates a customer in the CCS. Optionally the customer can be created with a doubleOptIn for a newsletter."
+			},
+			"response": [
+				{
+					"id": "9837006-fa8baefd-72cd-4d9a-b683-473b731a0d71",
+					"name": "202 accepted",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1"
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers"
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"customer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\",\n        \"id\": \"2fc03ddd-fe83-4901-9956-73100af97537\"\n    }\n}"
+				},
+				{
+					"id": "9837006-72b67419-d36d-4a7a-80e7-3c5209f55cb9",
+					"name": "400 - missing headers",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"timestamp\": \"2023-06-16T11:07:21.094+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/v1/cdp/customers\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Patch customer",
+			"id": "9837006-5248d97f-4962-487e-92ee-5615e1b5c384",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "ais-project-id",
+						"value": "1"
+					},
+					{
+						"key": "x-auth-username",
+						"value": "aic"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer\": {\n        \"firstName\": \"theodor\",\n        \"birthDate\": \"1985-09-05\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						":customerId"
+					],
+					"variable": [
+						{
+							"id": "8b42495a-97af-418f-85c9-e86f54d694a4",
+							"key": "customerId",
+							"value": "93a70735-7787-45c7-a291-6c17b917b19a"
+						}
+					]
+				},
+				"description": "Asynchronously updates a customer in the CCS. If a field of type array needs to be patched, the complete new array needs to be given in the body as the old field will be replaced with the new one. Status '202 Accepted' will be returned even if the customer does not exist and the update can not be processed."
+			},
+			"response": [
+				{
+					"id": "9837006-4d7bf2e9-70fd-4a65-8832-01584b3900d7",
+					"name": "202 accepted",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1"
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer\": {\n        \"firstName\": \"theodor\",\n        \"birthDate\": \"1985-09-05\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "93a70735-7787-45c7-a291-6c17b917b19a"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-b3aaf8ac-93f3-46cf-a71e-5a4c5908c0e3",
+					"name": "400 - missing headers",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer\": {\n        \"firstName\": \"theodor\",\n        \"birthDate\": \"1985-09-05\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "93a70735-7787-45c7-a291-6c17b917b19a"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"timestamp\": \"2023-06-16T11:08:54.283+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/v1/cdp/customers/93a70735-7787-45c7-a291-6c17b917b19a\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete customer",
+			"id": "9837006-e3d4230c-3231-4e07-98a5-73036f2bec1a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "ais-project-id",
+						"value": "1"
+					},
+					{
+						"key": "x-auth-username",
+						"value": "aic"
+					}
+				],
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						":customerId"
+					],
+					"variable": [
+						{
+							"id": "b73c5fb2-a61b-4688-b680-e51707126385",
+							"key": "customerId",
+							"value": "93a70735-7787-45c7-a291-6c17b917b19a"
+						}
+					]
+				},
+				"description": "Asynchronously deletes customer from CCS, triggers all necessary steps to remove all customer data from the platform. Status '202 Accepted' will be returned even if the customer does not exist."
+			},
+			"response": [
+				{
+					"id": "9837006-72036fae-ce2d-4e90-b2e4-4042385f4e03",
+					"name": "202 accepted",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1"
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "93a70735-7787-45c7-a291-6c17b917b19a"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-bb486da6-9fb6-4a5e-9854-b312d4994c8e",
+					"name": "400 - missing headers",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "93a70735-7787-45c7-a291-6c17b917b19a"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"timestamp\": \"2023-06-16T11:19:17.095+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/v1/cdp/customers/93a70735-7787-45c7-a291-6c17b917b19a\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add tags to customer",
+			"id": "9837006-43139f79-7f2e-4e8c-a1b3-70a1fcb63a06",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-username",
+						"value": "aic",
+						"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+					},
+					{
+						"key": "ais-project-id",
+						"value": "0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tags\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						":customerId",
+						"tags"
+					],
+					"variable": [
+						{
+							"id": "e8c0a6cf-0fc5-4e3c-9b3d-7786f5497322",
+							"key": "customerId",
+							"value": "c1685968147939"
+						}
+					]
+				},
+				"description": "Endpoint to add _tags_ to customer in CCS.  \n_Tags_ are values in the _tags_ field on the root of the _customer_ object. Each string in _tags_ array is unique.\n\nThis endpoint is asynchronous and adds tags with customer-modification kafka events."
+			},
+			"response": [
+				{
+					"id": "9837006-99494563-2f41-45f9-9b96-86dbeb0ccfb6",
+					"name": "202 - add tags",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": [\"foo\",\"bar\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:32:04 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-ba19c8d2-9e49-4999-9d22-bfdd2d6b9dbb",
+					"name": "202 - add single tag",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": \"foo-bar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:32:35 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-008e8df2-eb6b-44f9-914a-e2bee53b6ed4",
+					"name": "400 - missing tags field",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:35:33 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"java.lang.NullPointerException\",\n    \"message\": \"Invalid request json, tags cannot be null!\",\n    \"localizedMessage\": \"Invalid request json, tags cannot be null!\",\n    \"stackTrace\": \"java.lang.NullPointerException: Invalid request json, tags cannot be null!\\n\\tat java.base/java.util.Objects.requireNonNull(Unknown Source)\\n\\tat org.apache.commons.lang3.Validate.notNull(Validate.java:224)\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.addTags(CustomerRestService.java:139)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:676)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				},
+				{
+					"id": "9837006-b4da07e7-f15d-4355-a92f-c644254bd806",
+					"name": "400 - empty tags field",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:36:10 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"java.lang.IllegalArgumentException\",\n    \"message\": \"Invalid request json, tags cannot be empty!\",\n    \"localizedMessage\": \"Invalid request json, tags cannot be empty!\",\n    \"stackTrace\": \"java.lang.IllegalArgumentException: Invalid request json, tags cannot be empty!\\n\\tat org.apache.commons.lang3.Validate.isTrue(Validate.java:158)\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.addTags(CustomerRestService.java:149)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:676)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				},
+				{
+					"id": "9837006-e3bb53df-99ee-42bf-8d1e-1fcf2a875072",
+					"name": "400 - tags null",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:37:01 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"java.lang.IllegalArgumentException\",\n    \"message\": \"Invalid request json, tags cannot be null!\",\n    \"localizedMessage\": \"Invalid request json, tags cannot be null!\",\n    \"stackTrace\": \"java.lang.IllegalArgumentException: Invalid request json, tags cannot be null!\\n\\tat org.apache.commons.lang3.Validate.isTrue(Validate.java:158)\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.addTags(CustomerRestService.java:140)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:676)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove tags from customer",
+			"id": "9837006-aba9b611-de4e-48b9-bb07-bfdc66b505d8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-username",
+						"value": "aic",
+						"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+					},
+					{
+						"key": "ais-project-id",
+						"value": "0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tags\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						":customerId",
+						"tags"
+					],
+					"variable": [
+						{
+							"id": "27378763-4c1b-436c-b35e-9058af35b8e1",
+							"key": "customerId",
+							"value": "c1685968147939"
+						}
+					]
+				},
+				"description": "Endpoint to remove _tags_ from customer in CCS.  \n_Tags_ are values in the _tags_ field on the root of the _customer_ object. Each string in _tags_ array is unique.\n\nThis endpoint is asynchronous and removes tags with customer-modification kafka events."
+			},
+			"response": [
+				{
+					"id": "9837006-3c76de4d-1cf9-43f9-a82d-5890e1781a8e",
+					"name": "202 - remove tags",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": [\"foo\", \"bar\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:34:53 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-327ea8a2-b52d-4e08-b55d-c678f28f7f33",
+					"name": "202 - remove single tag",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": \"foo-bar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:34:12 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-cbe0d903-2eb6-403a-8e4b-288310153a30",
+					"name": "400 - missing tags field",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:37:26 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"java.lang.NullPointerException\",\n    \"message\": \"Invalid request json, tags cannot be null!\",\n    \"localizedMessage\": \"Invalid request json, tags cannot be null!\",\n    \"stackTrace\": \"java.lang.NullPointerException: Invalid request json, tags cannot be null!\\n\\tat java.base/java.util.Objects.requireNonNull(Unknown Source)\\n\\tat org.apache.commons.lang3.Validate.notNull(Validate.java:224)\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.removeTags(CustomerRestService.java:182)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:936)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:553)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:676)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				},
+				{
+					"id": "9837006-3795e1f6-c4df-4561-aafc-7acbe3468612",
+					"name": "400 - empty tags field",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:37:44 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"java.lang.IllegalArgumentException\",\n    \"message\": \"Invalid request json, tags cannot be empty!\",\n    \"localizedMessage\": \"Invalid request json, tags cannot be empty!\",\n    \"stackTrace\": \"java.lang.IllegalArgumentException: Invalid request json, tags cannot be empty!\\n\\tat org.apache.commons.lang3.Validate.isTrue(Validate.java:158)\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.removeTags(CustomerRestService.java:192)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:936)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:553)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:676)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				},
+				{
+					"id": "9837006-92cbf93e-858f-44a8-a274-84a922d3eadc",
+					"name": "400 - tags null",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth-username",
+								"value": "aic",
+								"description": "Source of modification, keycloak username header is used to make sure it matches with keycloak users."
+							},
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/tags",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"tags"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c1685968147939"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Jun 2023 09:37:59 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"java.lang.IllegalArgumentException\",\n    \"message\": \"Invalid request json, tags cannot be null!\",\n    \"localizedMessage\": \"Invalid request json, tags cannot be null!\",\n    \"stackTrace\": \"java.lang.IllegalArgumentException: Invalid request json, tags cannot be null!\\n\\tat org.apache.commons.lang3.Validate.isTrue(Validate.java:158)\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.removeTags(CustomerRestService.java:183)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:936)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:553)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:676)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:738)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add permission to customer",
+			"id": "9837006-ec85730b-3149-44b4-9af3-86b5f8afab74",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "ais-project-id",
+						"value": "1"
+					},
+					{
+						"key": "x-auth-username",
+						"value": "aic"
+					}
+				],
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/permissions/:chi",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						":customerId",
+						"permissions",
+						":chi"
+					],
+					"variable": [
+						{
+							"id": "4adb3636-de8e-4187-b1cd-be6d38b8f0be",
+							"key": "customerId",
+							"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
+						},
+						{
+							"id": "3f4706c7-f023-4c8c-8be7-a6e42aee6948",
+							"key": "chi",
+							"value": "60ec3b94dc86a75a51111910"
+						}
+					]
+				},
+				"description": "Adds a permission to a customer in CCS."
+			},
+			"response": [
+				{
+					"id": "9837006-fa6dbb0f-3be2-4eff-8566-693c7299ff47",
+					"name": "202 - add permission to customer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1"
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/permissions/:chi",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"permissions",
+								":chi"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
+								},
+								{
+									"key": "chi",
+									"value": "60ec3b94dc86a75a51111910"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-41e9fa71-a7de-4570-968e-44852efe1603",
+					"name": "400 - missing headers",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/permissions/:chi",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"permissions",
+								":chi"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
+								},
+								{
+									"key": "chi",
+									"value": "60ec3b94dc86a75a51111910",
+									"description": "channelInstanceId"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Remove a permission from customer",
+			"id": "9837006-081e3b6a-2900-42f3-b3e2-3e0de07ae617",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "ais-project-id",
+						"value": "1"
+					},
+					{
+						"key": "x-auth-username",
+						"value": "aic"
+					}
+				],
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/permissions/:chi",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						":customerId",
+						"permissions",
+						":chi"
+					],
+					"variable": [
+						{
+							"id": "2bf30581-7482-45f8-9f74-2abb1ec316e4",
+							"key": "customerId",
+							"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
+						},
+						{
+							"id": "d4bace35-1e12-4b07-a86b-afa308745bac",
+							"key": "chi",
+							"value": "60ec3b94dc86a75a51111910",
+							"description": "channelInstanceId"
+						}
+					]
+				},
+				"description": "Removes a permission from a customer in CCS."
+			},
+			"response": [
+				{
+					"id": "9837006-a263ed5e-9eb3-4998-a57d-0678d81737c4",
+					"name": "202 - remove a permission",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1"
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/permissions/:chi",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"permissions",
+								":chi"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
+								},
+								{
+									"key": "chi",
+									"value": "60ec3b94dc86a75a51111910"
+								}
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				},
+				{
+					"id": "9837006-3c812812-a875-4493-ad4c-c6a9b93ba0b6",
+					"name": "400 - missing headers",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "1",
+								"disabled": true
+							},
+							{
+								"key": "x-auth-username",
+								"value": "aic"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/:customerId/permissions/:chi",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								":customerId",
+								"permissions",
+								":chi"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
+								},
+								{
+									"key": "chi",
+									"value": "60ec3b94dc86a75a51111910",
+									"description": "channelInstanceId"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Exists",
+			"id": "9837006-57eb263f-c67f-4b2f-a841-c50a8d296da7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "ais-project-id",
+						"value": "0"
+					}
+				],
+				"url": {
+					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de",
+					"protocol": "http",
+					"host": [
+						"{{ais-contact-data-platform-svc}}"
+					],
+					"path": [
+						"v1",
+						"cdp",
+						"customers",
+						"exists"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "theo@test.de"
+						},
+						{
+							"key": "chi",
+							"value": "myChannelInstanceId",
+							"disabled": true
+						},
+						{
+							"key": "tag",
+							"value": "integration-test",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "9837006-c7b0c29e-01bd-48ca-81e4-3e6e3f984120",
+					"name": "200 ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de"
+								},
+								{
+									"key": "chi",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "19"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:50:17 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exists\": true\n}"
+				},
+				{
+					"id": "9837006-41d32217-08c1-4e48-b56c-5aa42bd5f097",
+					"name": "200 ok - with chi",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de&chi=myChannelInstanceId",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de"
+								},
+								{
+									"key": "chi",
+									"value": "myChannelInstanceId"
+								},
+								{
+									"key": "tag",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "19"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:53:35 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exists\": true\n}"
+				},
+				{
+					"id": "9837006-0e24b13c-88fe-4f1e-a4df-6310875054b0",
+					"name": "400 bad request - email missing",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?chi=myChannelInstanceId",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de",
+									"disabled": true
+								},
+								{
+									"key": "chi",
+									"value": "myChannelInstanceId"
+								},
+								{
+									"key": "tag",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:54:14 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"timestamp\": \"2024-03-22T11:54:14.854+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/v1/cdp/customers/exist\"\n}"
+				},
+				{
+					"id": "9837006-ccf78104-0537-49ff-ab2c-8b3ba19f7f68",
+					"name": "400 bad request - tag and chi",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de&chi=myChannelInstanceId&tag=myTag",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de"
+								},
+								{
+									"key": "chi",
+									"value": "myChannelInstanceId"
+								},
+								{
+									"key": "tag",
+									"value": "myTag"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:54:37 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"de.aicgroup.commons.appservices.model.RuntimeExceptionWithResponseStatus\",\n    \"message\": \"Either use parameter chi or tag! It is disallowed to use both.\",\n    \"localizedMessage\": \"Either use parameter chi or tag! It is disallowed to use both.\",\n    \"stackTrace\": \"de.aicgroup.commons.appservices.model.RuntimeExceptionWithResponseStatus: Either use parameter chi or tag! It is disallowed to use both.\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.exists(CustomerRestService.java:306)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:259)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:192)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:920)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:527)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:735)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				},
+				{
+					"id": "9837006-aca26675-030a-4b6a-98ea-2f1ecc2e7855",
+					"name": "200 ok - customer does not exist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de"
+								},
+								{
+									"key": "chi",
+									"value": "myChannelInstanceId",
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "20"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:55:27 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exists\": false\n}"
+				},
+				{
+					"id": "9837006-41759872-cfe0-4e49-9260-5f75aada8c48",
+					"name": "400 bad request - invalid tag",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de&tag=myTag",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de"
+								},
+								{
+									"key": "chi",
+									"value": "myChannelInstanceId",
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": "myTag"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:55:51 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exception\": \"de.aicgroup.commons.appservices.model.RuntimeExceptionWithResponseStatus\",\n    \"message\": \"Error while checking existance of customer. Invalid arguments, ensure passed tag exist.\",\n    \"localizedMessage\": \"Error while checking existance of customer. Invalid arguments, ensure passed tag exist.\",\n    \"stackTrace\": \"de.aicgroup.commons.appservices.model.RuntimeExceptionWithResponseStatus: Error while checking existance of customer. Invalid arguments, ensure passed tag exist.\\n\\tat de.aicgroup.contact.data.platform.appservice.rest.CustomerRestService.exists(CustomerRestService.java:336)\\n\\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)\\n\\tat java.base/java.lang.reflect.Method.invoke(Unknown Source)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:259)\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:192)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:920)\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)\\n\\tat org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:527)\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\\n\\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\\n\\tat org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:673)\\n\\tat org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:735)\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)\\n\\tat java.base/java.lang.Thread.run(Unknown Source)\\n\"\n}"
+				},
+				{
+					"id": "9837006-48f6ba61-1ce3-4231-9eda-8907deae4855",
+					"name": "200 ok - with tag",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ais-project-id",
+								"value": "0"
+							}
+						],
+						"url": {
+							"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers/exists?email=theo@test.de&tag=integration-test",
+							"protocol": "http",
+							"host": [
+								"{{ais-contact-data-platform-svc}}"
+							],
+							"path": [
+								"v1",
+								"cdp",
+								"customers",
+								"exists"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "theo@test.de"
+								},
+								{
+									"key": "chi",
+									"value": "myChannelInstanceId",
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": "integration-test"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "19"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 22 Mar 2024 11:58:01 GMT"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"exists\": true\n}"
+				}
+			]
+		}
+	]
+}
