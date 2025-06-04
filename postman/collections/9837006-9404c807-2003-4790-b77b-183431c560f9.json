@@ -25,12 +25,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"cust__omer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n    \"customer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://{{ais-contact-data-platform-svc}}/v1/cdp/customers?chi=myChannelInstanceId",
@@ -201,7 +196,6 @@
 					],
 					"variable": [
 						{
-							"id": "8b42495a-97af-418f-85c9-e86f54d694a4",
 							"key": "customerId",
 							"value": "93a70735-7787-45c7-a291-6c17b917b19a"
 						}
@@ -256,7 +250,7 @@
 					},
 					"status": "Accepted",
 					"code": 202,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -310,7 +304,7 @@
 					},
 					"status": "Bad Request",
 					"code": 400,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -350,7 +344,6 @@
 					],
 					"variable": [
 						{
-							"id": "b73c5fb2-a61b-4688-b680-e51707126385",
 							"key": "customerId",
 							"value": "93a70735-7787-45c7-a291-6c17b917b19a"
 						}
@@ -396,7 +389,7 @@
 					},
 					"status": "Accepted",
 					"code": 202,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -441,7 +434,7 @@
 					},
 					"status": "Bad Request",
 					"code": 400,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -492,7 +485,6 @@
 					],
 					"variable": [
 						{
-							"id": "e8c0a6cf-0fc5-4e3c-9b3d-7786f5497322",
 							"key": "customerId",
 							"value": "c1685968147939"
 						}
@@ -873,7 +865,6 @@
 					],
 					"variable": [
 						{
-							"id": "27378763-4c1b-436c-b35e-9058af35b8e1",
 							"key": "customerId",
 							"value": "c1685968147939"
 						}
@@ -1245,12 +1236,10 @@
 					],
 					"variable": [
 						{
-							"id": "4adb3636-de8e-4187-b1cd-be6d38b8f0be",
 							"key": "customerId",
 							"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
 						},
 						{
-							"id": "3f4706c7-f023-4c8c-8be7-a6e42aee6948",
 							"key": "chi",
 							"value": "60ec3b94dc86a75a51111910"
 						}
@@ -1302,7 +1291,7 @@
 					},
 					"status": "Accepted",
 					"code": 202,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -1353,7 +1342,7 @@
 					},
 					"status": "Bad Request",
 					"code": 400,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -1395,12 +1384,10 @@
 					],
 					"variable": [
 						{
-							"id": "2bf30581-7482-45f8-9f74-2abb1ec316e4",
 							"key": "customerId",
 							"value": "c8aad815-99e6-489e-b42c-ad91a0b61248"
 						},
 						{
-							"id": "d4bace35-1e12-4b07-a86b-afa308745bac",
 							"key": "chi",
 							"value": "60ec3b94dc86a75a51111910",
 							"description": "channelInstanceId"
@@ -1453,7 +1440,7 @@
 					},
 					"status": "Accepted",
 					"code": 202,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
@@ -1504,7 +1491,7 @@
 					},
 					"status": "Bad Request",
 					"code": 400,
-					"_postman_previewlanguage": null,
+					"_postman_previewlanguage": "Text",
 					"header": null,
 					"cookie": [],
 					"responseTime": null,
