@@ -25,7 +25,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}",
+					"raw": "{\n    \"cust__omer\": {\n        \"firstName\": \"theo\",\n        \"lastname\": \"test\",\n        \"email\": \"theo.test@aicgroup.de\",\n        \"_externalId\": \"1234\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
