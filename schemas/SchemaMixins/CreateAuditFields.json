@@ -1,0 +1,26 @@
+{
+    "__v": 0,
+    "_id": ObjectId("60ec3b94dc86a75a51112001"),
+    "modelName": "CreateAuditFields",
+    "role": "mixin",
+    "_jsonSchemaString": {
+        "required": ["_createdAt", "_createdBy"],
+        "properties": {
+            "_createdAt": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "_createdBy": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "userid": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

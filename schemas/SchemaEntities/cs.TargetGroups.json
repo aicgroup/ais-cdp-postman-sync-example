@@ -1,0 +1,49 @@
+{
+    "__v": 0,
+    "_id": ObjectId("60ec3b94dc86a75a51111018"),
+    "modelName": "cs.TargetGroups",
+    "role": "entity",
+    "requires": ["TechnicalFields", "Tags"],
+    "_jsonSchemaString": {
+        "required": ["name"],
+        "properties" : {
+            "name" : {
+                "type" : "string"
+            },
+            "count": {
+                "type" : ["string","number"],
+                "default" : "Not yet counted"
+            },
+            "countDate" : {
+                "type" : ["string","null"],
+                "format": "date-time",
+            },
+            "description" : {
+                "type" : "string",
+                "default": ""
+            },
+            "type": {
+                "type": "string",
+                "default": "targetgroup"
+            },
+            "condition": {
+                "type": "object",
+                "required": ["rules","conjunction"],
+                "default": {
+                    "conjunction" : "AND",
+                    "rules": []
+                },
+                "properties": {
+                    "rules": {
+                        "type": "array",
+                        "default": []
+                    },
+                    "conjunction": {
+                        "type": "string",
+                        "default": "AND"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "__v": 0,
+    "_id": ObjectId("60ec3b94dc86a75a51112004"),
+    "modelName": "TechnicalFields",
+    "role": "mixin",
+    "requires": ["DeleteAuditFields", "UpdateAuditFields", "CreateAuditFields"],
+    "jsonSchema": null
+}

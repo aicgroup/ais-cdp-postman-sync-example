@@ -1,0 +1,28 @@
+{
+    "__v": 0,
+    "_id": ObjectId("60ec3b94dc86a75a51112002"),
+    "modelName": "DeleteAuditFields",
+    "role": "mixin",
+    "_jsonSchemaString": {
+        "required": ["_deletedAt", "_deletedBy"],
+        "properties": {
+            "_deletedAt": {
+                "type": ["string", "null"],
+                "format": "date-time",
+                "default": null
+            },
+            "_deletedBy": {
+                "type": ["object", "null"],
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "userid": {
+                        "type": "string"
+                    }
+                },
+                "default": null
+            }
+        }
+    }
+}

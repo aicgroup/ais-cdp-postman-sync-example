@@ -1,0 +1,26 @@
+{
+    "__v": 0,
+    "_id": ObjectId("60ec3b94dc86a75a51112006"),
+    "modelName": "UpdateAuditFields",
+    "role": "mixin",
+    "_jsonSchemaString": {
+        "required": ["_updatedAt", "_updatedBy"],
+        "properties": {
+            "_updatedAt": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "_updatedBy": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "userid": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
