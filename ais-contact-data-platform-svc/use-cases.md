@@ -2,6 +2,7 @@
 # Use Cases – Contact Data Platform API
 
 Dieses Dokument beschreibt typische Anwendungsfälle (Use Cases) für die `contact-data-platform-svc` API. Jeder Anwendungsfall beschreibt den fachlichen Kontext, das erwartete Verhalten und ggf. relevante Endpunkte oder Parameter.
+Zugrunde liegt eine SchemaEntity dp.Contacts, so dass alle CRUD Routen generiert werden können.
 
 ## 📤 Export von Kontakten
 

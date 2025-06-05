@@ -72,7 +72,7 @@ When a `SchemaEntity` is mentioned (e.g., `cs.TargetGroups`), Copilot may assume
 
 - The variable _jsonSchemaString in a corresponding file defines the structure, required fields, data types, and constraints for the entity.
 - If available, Copilot should use the JSON Schema to:
-  - enrich descriptions and examples,
+  - enrich descriptions and examples, that at least a description should contain 200-300 characters.
   - infer validation rules (e.g., formats, min/max, enums),
   - generate more realistic sample payloads.
 - Example path: `schemas/SchemaEntities/cs.TargetGroups.schema.json`
