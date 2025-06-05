@@ -15,6 +15,35 @@ Dieses Repository dient der strukturierten Überarbeitung und Pflege von Postman
 
 ## Struktur und Arbeitsweise
 
+### 📁 Struktur im Dateisystem
+
+Das Repository ist strukturiert nach einzelnen Postman-Collections. Jede Collection besitzt ein eigenes Verzeichnis im Projekt-Root. Die zugehörigen Dateien beinhalten Use Cases, projektspezifische Anforderungen und werden durch eine eindeutige Postman-ID referenziert.
+
+Beispielhafte Struktur (`tree -L 3`):
+
+```
+.
+├── ais-contact-data-platform-svc
+│   ├── project-requirements.md
+│   └── use-cases.md
+├── LICENSE
+├── postman
+│   └── collections
+│       └── 9837006-9404c807-2003-4790-b77b-183431c560f9.json
+├── README.md
+└── schemas
+    ├── SchemaEntities
+    │   └── cs.TargetGroups.json
+    └── SchemaMixins
+        ├── CreateAuditFields.json
+        ├── DeleteAuditFields.json
+        ├── Tags.json
+        ├── TechnicalFields.json
+        └── UpdateAuditFields.json
+```
+
+Die Verbindung zwischen `postman/collections/*.json` und dem jeweiligen Verzeichnis basiert auf dem Wert in `info.name`. Daraus ergibt sich die Ordnerstruktur auf Root-Ebene. Weitere zugeordnete Schema-Dateien befinden sich unter `schemas/`, getrennt nach Entität (`SchemaEntities`) und Wiederverwendung (`SchemaMixins`).
+
 Jede Postman-Collection besitzt ein zugehöriges Verzeichnis im Projekt-Root (z. B. `ais-contact-data-platform-svc`). Darin befinden sich:
 
 - `project-requirements.md`: projektspezifische Ergänzungen und Rahmenbedingungen

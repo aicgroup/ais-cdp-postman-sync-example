@@ -55,6 +55,19 @@ Copilot should generate the full set of CRUD endpoints for SchemaEntities automa
 
 ## 🧬 JSON Schema Integration for SchemaEntities
 
+## 🔤 Naming Guidelines for JSON Structures
+
+To ensure consistency across all APIs:
+
+- All JSON keys **must use camelCase**.
+- Do **not** use underscores (`_`) or other separators in field names.
+- Avoid abbreviations unless they are project-standard (e.g., `id`, `URL`, `UUID`).
+- Use consistent naming for auditing fields (`_created[At/By]`, `_updated[At/By]`, `_deleted[At/By]`), if TechnicalFields are required.
+- Avoid plural property names for single objects (e.g., use `tag`, not `tags` if it's not an array).
+- Do not include data type hints in property names (e.g., use `status`, not `statusEnum`).
+
+ 
+
 When a `SchemaEntity` is mentioned (e.g., `cs.TargetGroups`), Copilot may assume that a corresponding JSON Schema file exists.
 
 - The variable _jsonSchemaString in a corresponding file defines the structure, required fields, data types, and constraints for the entity.
@@ -88,9 +101,33 @@ This resolution step ensures that required fields, validation rules, and field t
 
 ---
 
-## 🔐 Authentication Strategy
+## 🏷️ Tagging Strategy
+
+By default, all routes are tagged with `standard`.
+
+However, a route may explicitly be tagged as `subscriptionType` or `projectType` in one of the following locations:
+- In the corresponding Postman collection (look for a `tag` field on the request or folder),
+- In the use-case file (via a frontmatter field or structured metadata).
+
+Only one tag is allowed per route. If multiple tags are detected, Copilot must ask the developer for clarification.
+
+Copilot must preserve the tag when syncing or generating files. If no tag is found, fallback to `standard`.
+
+## 🧾 Optional Route Annotations
 
 This API uses Keycloak-based authentication. The Postman collection includes a dedicated `Login` folder that describes how to obtain a valid access token.
+In addition to the functional tag (e.g., `standard`, `projectType`, `subscriptionType`), a route may be annotated with optional **route-level metadata tags** that provide extra semantics or constraints.
+These annotations are purely informative and do not affect route classification, but they may influence documentation, testing, or tooling behavior.
+
+Valid annotations include:
+
+- `readonly`: The endpoint does not support mutation. Typically used for safe, idempotent routes (e.g., analytics or search).
+- `internalOnly`: Not intended for public consumption. May expose administrative or experimental features.
+- `adminScope`: Requires elevated privileges. Only available to admin or superuser roles.
+- `deprecated`: This route is being phased out. Avoid using it in new integrations.
+- `syncJob`: Triggers or monitors batch-based or scheduled operations.
+- `realtime`: Supports real-time communication or reflects event-based processing (e.g., WebSocket, SSE, Kafka).
+- `featureFlagged`: Only active under a specific feature flag or rollout condition.
 
 Copilot should:
 - **not define additional login endpoints** (e.g., `/auth/login`) unless explicitly instructed.
@@ -98,6 +135,25 @@ Copilot should:
 - **omit repeating authentication flows** in endpoint documentation unless clarification is necessary.
 
 Authentication is a prerequisite, not part of the endpoint logic.
+Optional annotations can be added in:
+
+- The Postman request `description` field (structured block),
+- The frontmatter of use-case Markdown files (`tags` field),
+- Comments or metadata blocks in `project-requirements.md`.
+
+### Example
+```yaml
+tags:
+  - subscriptionType
+  - readonly
+  - internalOnly
+```
+
+In this example:
+- The functional tag is `subscriptionType`
+- Additional route constraints indicate read-only access and internal visibility
+
+Only one **functional tag** is allowed per route. Optional annotations may be combined freely.
 
 ---
 
@@ -118,6 +174,7 @@ Authentication is a prerequisite, not part of the endpoint logic.
 - Use **realistic data** (no `foo`, `bar`, `baz` unless required).
 - JSON examples must be **indented with 2 spaces**, without trailing commas.
 - Examples must match the `application/json` content type.
+
 
 ---
 
@@ -293,4 +350,75 @@ Depending on which artifacts are present, the agent proceeds as follows:
 - For each use-case without a corresponding Postman collection, generates a new one.
 - Uses `info.name` to determine the target filename.
 - Avoids overwriting existing collections and requests confirmation if needed.
+
+---
+
+## 🧪 Dry-Run Mode
+
+To safely preview changes before overwriting the original Postman collection, the agent supports a **dry-run mode**.
+
+### Behavior
+
+When enabled, dry-run mode:
+
+- **creates a local copy** of the collection file under:
+  - `postman/dry-run/collections/<original-filename>.json`
+- **applies all transformations and enrichment** to this copy only
+- **does not write** to `postman/collections/` unless explicitly confirmed by the developer
+
+This allows developers to:
+
+- review the generated or updated content before syncing
+- compare the dry-run output with the original collection
+- manually inspect changes and validate correctness
+
+### Activation
+
+Dry-run mode is active when:
+
+- the `--dry-run` flag is passed to any command (`init-use-case`, `sync`, `generate-collection`, etc.)
+- the agent operates in `CI` or `preview` mode
+- the developer explicitly requests a dry run in natural language (e.g., “show me what would change, but don’t modify anything yet”)
+
+### Example Command
+
+```
+init-use-case 9837006-9404c807-2003-4790-b77b-183431c560f9.json --dry-run
+```
+
+The resulting file will be written to:
+
+```
+postman/dry-run/collections/9837006-9404c807-2003-4790-b77b-183431c560f9.json
+```
+
+
+## 🧊 Visual Documentation Structure
+
+To help new developers quickly understand how documentation files relate to each other, we use a predictable directory structure with visually distinct boundaries.
+
+### Example Layout (from project root)
+
+```
+.
+├── ais-contact-data-platform-svc
+│   ├── project-requirements.md    ← project-specific design constraints
+│   └── use-cases.md               ← structured use-case definitions
+├── postman
+│   └── collections
+│       └── <collection-id>.json  ← raw Postman definition file
+├── schemas
+│   ├── SchemaEntities            ← JSON Schema definitions per entity
+│   └── SchemaMixins              ← Mixin building blocks for reuse
+└── README.md                     ← entry point and structure overview
+```
+
+### Guidelines
+
+- Every collection (e.g. `ais-contact-data-platform-svc`) may contain a `project-requirements.md` and `use-cases.md` file.
+- Each file describes a different aspect:
+  - `project-requirements.md` defines constraints, rules, and validation hints.
+  - `use-cases.md` holds specific request/response logic and documentation per endpoint.
+- Avoid duplicating logic between `project-requirements.md` and `copilot-instructions.md`. When a rule applies to all projects, move it to `copilot-instructions.md`.
+- The `README.md` must describe this directory structure to make navigation easier for contributors.
 
