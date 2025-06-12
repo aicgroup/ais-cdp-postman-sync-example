@@ -119,3 +119,17 @@ Zur Steuerung der Agenten können folgende Kommandos in PRs oder Commit-Messages
 ## Fragen?
 
 Bei Unsicherheiten bitte Rücksprache mit dem Projektteam halten oder einen PR mit `@review` markieren.
+
+## OpenAPI-Synchronisation
+
+Mit dem Skript `sync-openapi.js` kann aus jeder Postman-Collection automatisch
+eine OpenAPI-Datei erzeugt werden. Die generierten YAML-Dateien landen im
+Verzeichnis `open-api/` und tragen den Namen aus `info.name` der jeweiligen
+Collection.
+
+Aufruf:
+
+```bash
+node sync-openapi.js
+```
+
