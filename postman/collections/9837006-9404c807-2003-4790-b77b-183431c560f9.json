@@ -323,7 +323,7 @@
 				"header": [
 					{
 						"key": "ais-project-id",
-						"value": "1"
+						"value": "{{ais-project-id}}"
 					},
 					{
 						"key": "x-auth-username",
@@ -458,7 +458,7 @@
 					},
 					{
 						"key": "ais-project-id",
-						"value": "0"
+						"value": "{{ais-project-id}}"
 					}
 				],
 				"body": {
@@ -838,7 +838,7 @@
 					},
 					{
 						"key": "ais-project-id",
-						"value": "0"
+						"value": "{{ais-project-id}}"
 					}
 				],
 				"body": {
@@ -1213,7 +1213,7 @@
 				"header": [
 					{
 						"key": "ais-project-id",
-						"value": "1"
+						"value": "{{ais-project-id}}"
 					},
 					{
 						"key": "x-auth-username",
@@ -1361,7 +1361,7 @@
 				"header": [
 					{
 						"key": "ais-project-id",
-						"value": "1"
+						"value": "{{ais-project-id}}"
 					},
 					{
 						"key": "x-auth-username",
@@ -1510,7 +1510,7 @@
 				"header": [
 					{
 						"key": "ais-project-id",
-						"value": "0"
+						"value": "{{ais-project-id}}"
 					}
 				],
 				"url": {
