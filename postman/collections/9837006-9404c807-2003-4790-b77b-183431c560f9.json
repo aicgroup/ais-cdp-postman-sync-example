@@ -166,7 +166,7 @@
 				"header": [
 					{
 						"key": "ais-project-id",
-						"value": "1"
+						"value": "{{ais-project-id}}"
 					},
 					{
 						"key": "x-auth-username",
